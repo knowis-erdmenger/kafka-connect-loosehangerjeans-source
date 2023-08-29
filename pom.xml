@@ -31,6 +31,14 @@
         <url>https://github.com/IBM/kafka-connect-loosehangerjeans-source/issues</url>
     </issueManagement>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/knowis-erdmenger/kafka-connect-loosehangerjeans-source</url>
+        </repository>
+    </distributionManagement>
+
     <dependencies>
         <dependency>
             <groupId>org.apache.kafka</groupId>
