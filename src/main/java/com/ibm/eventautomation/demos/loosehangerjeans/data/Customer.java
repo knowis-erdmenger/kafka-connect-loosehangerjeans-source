@@ -40,7 +40,7 @@ public class Customer {
      *  provided name. Generates a uuid for the customer id.
      */
     public Customer(String name) {
-        this.id = UUID.randomUUID().toString();
+        this.id = CustomerId.generateCustomerId();
         this.name = name;
     }
     /**
@@ -48,7 +48,7 @@ public class Customer {
      *  customer.
      */
     public Customer(Faker faker) {
-        this.id = UUID.randomUUID().toString();
+        this.id = CustomerId.generateCustomerId();
         this.name = faker.name().fullName();
     }
 
