@@ -32,17 +32,24 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
+    - name: Publish artefacts
+    - run: mkdir staging && cp target/*.jar staging
+    - uses: actions/upload-artifact@v3
+      with:
+        name: Package
+        path: staging
+
     #- name: Publish to GitHub Packages Apache Maven
     #  run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
     #  env:
     #    GITHUB_TOKEN: ${{ github.token }}
 
-    - name: upload release artifact
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./kafka-connect-loosehangerjeans-source-${{ env.RELEASE_VERSION }}-jar-with-dependencies.jar
-        asset_name: kafka-connect-loosehangerjeans-source-jar-with-dependencies.jar
-        asset_content_type: application/jar
+    #- name: upload release artifact
+    # uses: actions/upload-release-asset@v1
+    #  env:
+    #    GITHUB_TOKEN: ${{ github.token }}
+    #  with:
+    #    upload_url: ${{ steps.create_release.outputs.upload_url }}
+    #    asset_path: ./kafka-connect-loosehangerjeans-source-${{ env.RELEASE_VERSION }}-jar-with-dependencies.jar
+    #    asset_name: kafka-connect-loosehangerjeans-source-jar-with-dependencies.jar
+    #    asset_content_type: application/jar
